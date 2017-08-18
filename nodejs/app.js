@@ -128,7 +128,7 @@ app.get('/dashboard',function(req,res){
 	res.sendFile(__dirname + '/views/dashboard.html');
 });
 app.get('/chat', function(req, res) {
-	res.redirect('http://192.168.252.250/views/chat');
+	res.redirect('http://192.168.252.250/chat');
 });
 
 //Abre conexion con socket
