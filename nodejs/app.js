@@ -124,11 +124,11 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/views/index.html');
 });
-app.get('/chat', function(req, res) {
-	res.redirect('http://192.168.252.250/views/chat');
-});
 app.get('/dashboard',function(req,res){
 	res.sendFile(__dirname + '/views/dashboard.html');
+});
+app.get('/chat', function(req, res) {
+	res.redirect('http://192.168.252.250/views/chat');
 });
 
 //Abre conexion con socket
