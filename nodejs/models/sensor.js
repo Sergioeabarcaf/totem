@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://192.168.150.2/estacion');
+mongoose.connect('mongodb://localhost/estacion');
 
 var sensor_schema = new Schema({
   paramSensor: String,
