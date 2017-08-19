@@ -1,0 +1,31 @@
+El problema de ejecutar node en el puerto 80 resulta porque se encuentra reservado
+para la ejecucion de programas con privilegio mas elevados por ejemplo un servidor
+web como apache o nginx. Para solucionar esto debemos ejecutar el programa con privilegios
+de administrador.
+
+1) Primera solucion seria:
+
+sudo node app.js
+
+2) Una segunda solucion seria buscar donde esta el ejecutable de node (ruta), luego copiar la ruta
+   que devuelve la busqueda y ejecutar la ruta con privilegios de superadministrador.
+
+2.1) buscar ruta de node:
+
+INPUT (Comando en terminal)
+
+"which node"
+
+OUTPUT (en mi pc)
+
+"/home/fransafu/.nvm/versions/node/v7.8.0/bin/node"
+
+2.2) Ejecutar 
+
+INPUT (Comando en terminal)
+
+sudo /home/fransafu/.nvm/versions/node/v7.8.0/bin/node app.js
+
+OUTPUT
+
+Inicia servidor de node
