@@ -1,0 +1,11 @@
+# Instalar mongodb
+
+apt-get install mongodb
+
+# Instalar Mosquitto
+
+apt-get install mosquitto
+
+# Instalar Cliente Mosquitto
+
+apt-get install mosquitto-clients
