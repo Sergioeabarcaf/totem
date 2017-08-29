@@ -1,11 +1,51 @@
 # Instalar mongodb
 
-apt-get install mongodb
+	sudo apt-get install mongodb
 
 # Instalar Mosquitto
 
-apt-get install mosquitto
+	sudo apt-get install mosquitto
 
 # Instalar Cliente Mosquitto
 
-apt-get install mosquitto-clients
+	sudo apt-get install mosquitto-clients
+
+# Agregar los listener a /etc/mosquitto/mosquitto.conf
+
+	listener 1883 localhost
+	listener 9001 localhost
+	listener 1883 192.168.150.2
+	listener 9001 192.168.150.2
+
+# Modificar el sistema de arranque del servicio para mosquitto
+
+# 1) Borrar configuracion actual
+	sudo update-rc.d mosquitto remove
+
+# 2) Editar hora de configuracion (o crear si no existe)
+# 	 Esta hora debe quedar sin informacion
+
+	sudo nano /etc/systemd/system/mosquitto.service
+
+# 3) Agregar la siguiente informacion en la hoja qu estamos editando
+
+	[Unit]
+	Description=Mosquitto MQTT Broker
+	Documentation=man:mosquitto(8)
+	Documentation=man:mosquitto.conf(5)
+	ConditionPathExists=/etc/mosquitto/mosquitto.conf
+	After=xdk-daemon.service
+
+	[Service]
+	ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+	ExecReload=/bin/kill -HUP $MAINPID
+	User=mosquitto
+	Restart=on-failure
+	RestartSec=10
+
+	[Install]
+	WantedBy=multi-user.target
+
+# 4) Configurar /etc/mosquitto/mosquitto.conf para mqtt en vez de
+# 	 websocket, se debe buscar websocket y reemplazar por mqtt
+
