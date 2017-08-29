@@ -8,13 +8,13 @@ import sys
 import json
 
 host = "192.168.150.2" #Direccion IP de donde esta alojado el servidor MQTT
-hostNC = "192.168.252.250" #Direccion IP de donde esta alojado el servidor MQTT nodo central
+#hostNC = "192.168.252.250" #Direccion IP de donde esta alojado el servidor MQTT nodo central
 port = "1883" #Puerto por defecto del servidor MQTT
 
 
 #diccionario donde se acumularan los valores de las variables medidas por un Arduino.
 datos = {
-    'lumens' : 0,
+    'lummens' : 0,
     'uv': 0,
     'viend_ins_grado': 0,
     'viend_chr': 0,
@@ -46,7 +46,7 @@ try:
     info = float(info)
 except ValueError:
     info = info.strip(' \t\r\n')
-datos['lumens'] = info
+datos['lummens'] = info
 #A continuacion el indice UV:
 info = arduino_txrx.readline()
 try:
@@ -125,7 +125,7 @@ except ValueError:
     info = info.strip(' \t\r\n')
 datos['lluvia_24h'] = info
 
-os.system("mosquitto_pub -t lumens" + " -m totem1/" + str(datos['lumens']) + " -h " + host + " -p " + port)
+os.system("mosquitto_pub -t lummens" + " -m totem1/" + str(datos['lummens']) + " -h " + host + " -p " + port)
 os.system("mosquitto_pub -t uv" + " -m totem1/" + str(datos['uv']) + " -h " + host + " -p " + port)
 os.system("mosquitto_pub -t viend_ins_grado" + " -m totem1/" + str(datos['viend_ins_grado']) + " -h " + host + " -p " + port)
 os.system("mosquitto_pub -t viend_chr" + " -m totem1/" + str(datos['viend_chr']) + " -h " + host + " -p " + port)
@@ -138,7 +138,8 @@ os.system("mosquitto_pub -t raf_10m_grados" + " -m totem1/" + str(datos['raf_10m
 os.system("mosquitto_pub -t lluvia_1h" + " -m totem1/" + str(datos['lluvia_1h']) + " -h " + host + " -p " + port)
 os.system("mosquitto_pub -t lluvia_24h" + " -m totem1/" + str(datos['lluvia_24h']) + " -h " + host + " -p " + port)
 
-os.system("mosquitto_pub -t lumens" + " -m totem1/" + str(datos['lumens']) + " -h " + hostNC + " -p " + port)
+"""
+os.system("mosquitto_pub -t lummens" + " -m totem1/" + str(datos['lummens']) + " -h " + hostNC + " -p " + port)
 os.system("mosquitto_pub -t uv" + " -m totem1/" + str(datos['uv']) + " -h " + hostNC + " -p " + port)
 os.system("mosquitto_pub -t viend_ins_grado" + " -m totem1/" + str(datos['viend_ins_grado']) + " -h " + hostNC + " -p " + port)
 os.system("mosquitto_pub -t viend_chr" + " -m totem1/" + str(datos['viend_chr']) + " -h " + hostNC + " -p " + port)
@@ -150,6 +151,8 @@ os.system("mosquitto_pub -t raf_ins_grados" + " -m totem1/" + str(datos['raf_ins
 os.system("mosquitto_pub -t raf_10m_grados" + " -m totem1/" + str(datos['raf_10m_grados']) + " -h " + hostNC + " -p " + port)
 os.system("mosquitto_pub -t lluvia_1h" + " -m totem1/" + str(datos['lluvia_1h']) + " -h " + hostNC + " -p " + port)
 os.system("mosquitto_pub -t lluvia_24h" + " -m totem1/" + str(datos['lluvia_24h']) + " -h " + hostNC + " -p " + port)
+"""
+
 #creamos un archivo en formato json donde se agregan la informacion acumulada en el diccionario "datos" para el envio de la informacion a una base de datos:
 with open('datos_arduino.jason','w') as archivo:
         json.dump(datos,archivo)

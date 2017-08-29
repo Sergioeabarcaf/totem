@@ -17,7 +17,7 @@ client.on('connect', function() {
 	client.subscribe('altitud');
 	client.subscribe('presion_nivelMar');
 	client.subscribe('temperatura_BMP');
-	client.subscribe('lumens');
+	client.subscribe('lummens');
 	client.subscribe('uv');
 	client.subscribe('viend_ins_grado');
 	client.subscribe('viend_chr');
@@ -128,7 +128,7 @@ app.get('/dashboard',function(req,res){
 	res.sendFile(__dirname + '/views/dashboard.html');
 });
 app.get('/chat', function(req, res) {
-	res.redirect('http://192.168.252.250/chat');
+	res.sendFile(__dirname + '/views/chat.html');
 });
 
 //Abre conexion con socket
@@ -196,5 +196,34 @@ io.sockets.on('connection', function(socket) {
 			value: data
 		});
 	});
+
+	//Funciones para el sistema de chat
+	socket.on('send message', function(data) {
+		io.sockets.emit('new message', {
+			msg: data,
+			nick: socket.nickname
+		});
+	});
+
+	socket.on('new user', function(data, callback) {
+		if (data in nicknames) {
+			callback(false);
+		} else {
+			callback(true);
+			socket.nickname = data;
+			nicknames[socket.nickname] = 1;
+			updateNickNames();
+		}
+	});
+
+	socket.on('disconnect', function(data) {
+		if (!socket.nickname) return;
+		delete nicknames[socket.nickname];
+		updateNickNames();
+	});
+
+	function updateNickNames() {
+		io.sockets.emit('usernames', nicknames);
+	}
 
 });

@@ -4,7 +4,7 @@ from pi_sht1x import SHT1x
 import RPi.GPIO as GPIO
 
 host = "192.168.150.2" #Direccion IP de donde esta alojado el servidor MQTT
-hostNC = "192.168.252.250" #Direccion IP de donde esta alojado el servidor MQTT nodo central
+# hostNC = "192.168.252.250" #Direccion IP de donde esta alojado el servidor MQTT nodo central
 port = "1883" #Puerto por defecto del servidor MQTT
 t0 = 'puntoRocio' #Direccion donde se envian los datos del sensor
 
@@ -14,4 +14,4 @@ v0 = str(sensor.calculate_dew_point(sensor.temperature_celsius,sensor.humidity))
 men = "totem1/" + v0
 #Publicacion de los datos del sensor al servidor MQTT
 os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + host + " -p " + port)
-os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + hostNC + " -p " + port)
+# os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + hostNC + " -p " + port)
