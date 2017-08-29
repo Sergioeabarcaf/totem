@@ -16,6 +16,7 @@ jQuery(function($) {
            if(data) {
                $('#nickWrap').hide();
                $('#contentWrap').show();
+               $('#userWrap').show();
            } else {
                $("#login-error").show();
            }
