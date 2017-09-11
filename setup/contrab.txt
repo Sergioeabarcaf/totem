@@ -1,0 +1,7 @@
+####
+Agregar las siguientes lineas de codigo al crontab de la raspberry para automatizar la ejecucion del sistema
+
+###########
+
+@reboot sudo python /home/pi/app.py
+@reboot sudo python /home/pi/totem/Est_Met/sensores/test.py
