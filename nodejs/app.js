@@ -114,6 +114,76 @@ client.on('message', function(topic, message) {
 		});
 		console.log("Emitio el mensaje a new lummens");
 	}
+
+	if(topic=="altitud"){
+		io.sockets.emit('new altitud', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new altitud");
+	}
+
+	if(topic=="presion_nivelMar"){
+		io.sockets.emit('new presion_nivelMar', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new presion_nivelMar");
+	}
+
+	if(topic=="temperatura_BMP"){
+		io.sockets.emit('new temperatura_BMP', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new temperatura_BMP");
+	}
+
+	if(topic=="viend_chr"){
+		io.sockets.emit('new viend_chr', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new viend_chr");
+	}
+
+	if(topic=="viend_2m_grados"){
+		io.sockets.emit('new viend_2m_grados', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new viend_2m_grados");
+	}
+
+	if(topic=="raf_ins"){
+		io.sockets.emit('new raf_ins', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new raf_ins");
+	}
+
+	if(topic=="raf_10m"){
+		io.sockets.emit('new raf_10m', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new raf_10m");
+	}
+
+	if(topic=="raf_ins_grados"){
+		io.sockets.emit('new raf_ins_grados', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new raf_ins_grados");
+	}
+
+	if(topic=="raf_10m_grados"){
+		io.sockets.emit('new raf_10m_grados', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new raf_10m_grados");
+	}
+
+	if(topic=="lluvia_24h"){
+		io.sockets.emit('new lluvia_24h', {
+			value: String(splitMessage[1])
+		});
+		console.log("Emitio el mensaje a new lluvia_24h");
+	}
 });
 
 //Puerto donde corre el sistema

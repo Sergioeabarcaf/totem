@@ -18,43 +18,96 @@
   <a href="/" class="btn btn-info btn-block" role="button">Home</a>
 	<div class="container">
 		<div class="row">
-			<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-xl-2 text-center">
-				<h3 class="text-center">Temperatura</h3>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4 class="text-center">Temperatura</h4>
 				<canvas id="temperatura"></canvas>
 			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-xl-2 text-center">
-				<h3>Humedad</h3>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4>Humedad</h4>
 				<canvas id="humedad"></canvas>
 			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-xl-2 text-center">
-				<h3>Punto Rocio</h3>
-				<canvas id="puntoRocio"></canvas>
-			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-xl-2 text-center">
-				<h3>Radiación uv</h3>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4>Radiación uv</h4>
 				<canvas id="uv"></canvas>
 			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-xl-2 text-center">
-				<h3>Precipitación (1 Hr)</h3>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4>Precipitación (1 Hr)</h4>
 				<canvas id="mmAgua"></canvas>
 			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-xl-2 text-center">
-				<h3>Luminosidad</h3>
-				<canvas id="lummens"></canvas>
-			</div>
 		</div>
+		<hr>
 		<div class="row">
 			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
-				<h3>Presión</h3>
+				<h4>Presión</h4>
 				<canvas id="presion"></canvas>
 			</div>
 			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
-				<h3>Velocidad Viento (2 min)</h3>
+				<h4>Velocidad Viento (2 min)</h4>
 				<canvas id="velViento"></canvas>
 			</div>
 			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
-				<h3>Direccion Viento</h3>
+				<h4>Direccion Viento</h4>
 				<canvas id="dirViento"></canvas>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4>Altitud</h4>
+				<canvas id="altitud"></canvas>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4>temperatura_BMP</h4>
+				<canvas id="temperatura_BMP"></canvas>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4>lluvia_24h</h4>
+				<canvas id="lluvia_24h"></canvas>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4>Punto Rocio</h4>
+				<canvas id="puntoRocio"></canvas>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
+				<h4>Luminosidad</h4>
+				<canvas id="lummens"></canvas>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
+				<h4>Presion nivel del mar</h4>
+				<canvas id="presion_nivelMar"></canvas>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
+				<h4>Direccion cardinal del viento</h4>
+				<canvas id="viend_chr"></canvas>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
+				<h4>Direccion Viento promedio 2 minutos</h4>
+				<canvas id="viend_2m_grados"></canvas>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
+				<h4>Velocidad del viento instantanea</h4>
+				<canvas id="raf_ins"></canvas>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
+				<h4>Velocidad promedio 10 minutos</h4>
+				<canvas id="raf_10m"></canvas>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
+				<h4>Direccion rafaga instantanea</h4>
+				<canvas id="raf_ins_grados"></canvas>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center">
+				<h4>Direccion rafaga promedio 10 minutos</h4>
+				<canvas id="raf_10m_grados"></canvas>
 			</div>
 		</div>
 	</div>
