@@ -1,0 +1,32 @@
+###
+para permitir que el servidor mosquitto se ejecute desde el inicio del sistema
+se deben realizar los siguientes pasos:
+
+###########
+
+1) Borrar configuracion actual
+	sudo update-rc.d mosquitto remove
+
+2) Editar hora de configuracion (o crear si no existe)
+ 	 Esta hoja debe quedar sin informacion
+
+	sudo nano /etc/systemd/system/mosquitto.service
+
+3) Agregar la siguiente informacion en la hoja qu estamos editando
+
+[Unit]
+Description=Mosquitto MQTT Broker
+Documentation=man:mosquitto(8)
+Documentation=man:mosquitto.conf(5)
+ConditionPathExists=/etc/mosquitto/mosquitto.conf
+After=xdk-daemon.service
+
+[Service]
+ExecStart=/usr/local/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+ExecReload=/bin/kill -HUP $MAINPID
+User=pi
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
