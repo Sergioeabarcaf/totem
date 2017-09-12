@@ -203,69 +203,6 @@ app.get('/chat', function(req, res) {
 
 //Abre conexion con socket
 io.sockets.on('connection', function(socket) {
-	//Funciones para actualizar los parametros del dashboard
-	socket.on('send temperatura', function(data) {
-		console.log(data);
-		io.sockets.emit('new temperatura', {
-			value: data
-		});
-	});
-
-	socket.on('send humedad', function(data) {
-		console.log(data);
-		io.sockets.emit('new humedad', {
-			value: data
-		});
-	});
-
-	socket.on('send presion', function(data) {
-		console.log(data);
-		io.sockets.emit('new presion', {
-			value: data
-		});
-	});
-
-	socket.on('send puntoRocio', function(data) {
-		console.log(data);
-		io.sockets.emit('new puntoRocio', {
-			value: data
-		});
-	});
-
-	socket.on('send viend_ins_grado', function(data) {
-		console.log(data);
-		io.sockets.emit('new viend_ins_grado', {
-			value: data
-		});250
-	});
-
-	socket.on('send vel_2m', function(data) {
-		console.log(data);
-		io.sockets.emit('new vel_2m', {
-			value: data
-		});
-	});
-
-	socket.on('send lluvia_1h', function(data) {
-		console.log(data);
-		io.sockets.emit('new lluvia_1h', {
-			value: data
-		});
-	});
-
-	socket.on('send uv', function(data) {
-		console.log(data);
-		io.sockets.emit('new uv', {
-			value: data
-		});
-	});
-
-	socket.on('send lummens', function(data) {
-		console.log(data);
-		io.sockets.emit('new lummens', {
-			value: data
-		});
-	});
 
 	//Funciones para el sistema de chat
 	socket.on('send message', function(data) {
