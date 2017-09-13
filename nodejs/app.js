@@ -33,12 +33,10 @@ client.on('connect', function() {
 
 //generar el schema para cargar a la db
 client.on('message', function(topic, message) {
-	splitMessage = message.toString().split("/");
 	//Schema sensores
 	var sensor = new Sensor({
 		paramSensor: String(topic),
-		dato: String(splitMessage[1]),
-		idTotem: String(splitMessage[0]),
+		dato: message,
 		fechaYHora: Date()
 	});
 
@@ -54,135 +52,30 @@ client.on('message', function(topic, message) {
 	//Condicional para ejecutar la funcion correspondiente a cada dashboard
 	if(topic=="temperatura"){
 		io.sockets.emit('new temperatura', {
-			value: String(splitMessage[1])
+			value: dato
 		});
 		console.log("Emitio el mensaje a new temperatura");
 	}
 
 	if(topic=="humedad"){
 		io.sockets.emit('new humedad', {
-			value: String(splitMessage[1])
+			value: dato
 		});
 		console.log("Emitio el mensaje a new humedad");
 	}
 
 	if(topic=="presion"){
 		io.sockets.emit('new presion', {
-			value: String(splitMessage[1])
+			value: dato
 		});
 		console.log("Emitio el mensaje a new presion");
 	}
 
-	if(topic=="puntoRocio"){
-		io.sockets.emit('new puntoRocio', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new puntoRocio");
-	}
-
-	if(topic=="viend_ins_grado"){
-		io.sockets.emit('new viend_ins_grado', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new viend_ins_grado");
-	}
-
-	if(topic=="vel_2m"){
-		io.sockets.emit('new vel_2m', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new vel_2m");
-	}
-
-	if(topic=="lluvia_1h"){
-		io.sockets.emit('new lluvia_1h', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new lluvia_1h");
-	}
-
 	if(topic=="uv"){
 		io.sockets.emit('new uv', {
-			value: String(splitMessage[1])
+			value: dato
 		});
 		console.log("Emitio el mensaje a new uv");
-	}
-
-	if(topic=="lummens"){
-		io.sockets.emit('new lummens', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new lummens");
-	}
-
-	if(topic=="altitud"){
-		io.sockets.emit('new altitud', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new altitud");
-	}
-
-	if(topic=="presion_nivelMar"){
-		io.sockets.emit('new presion_nivelMar', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new presion_nivelMar");
-	}
-
-	if(topic=="temperatura_BMP"){
-		io.sockets.emit('new temperatura_BMP', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new temperatura_BMP");
-	}
-
-	if(topic=="viend_chr"){
-		io.sockets.emit('new viend_chr', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new viend_chr");
-	}
-
-	if(topic=="viend_2m_grados"){
-		io.sockets.emit('new viend_2m_grados', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new viend_2m_grados");
-	}
-
-	if(topic=="raf_ins"){
-		io.sockets.emit('new raf_ins', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new raf_ins");
-	}
-
-	if(topic=="raf_10m"){
-		io.sockets.emit('new raf_10m', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new raf_10m");
-	}
-
-	if(topic=="raf_ins_grados"){
-		io.sockets.emit('new raf_ins_grados', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new raf_ins_grados");
-	}
-
-	if(topic=="raf_10m_grados"){
-		io.sockets.emit('new raf_10m_grados', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new raf_10m_grados");
-	}
-
-	if(topic=="lluvia_24h"){
-		io.sockets.emit('new lluvia_24h', {
-			value: String(splitMessage[1])
-		});
-		console.log("Emitio el mensaje a new lluvia_24h");
 	}
 });
 
@@ -198,39 +91,5 @@ app.get('/dashboard',function(req,res){
 	res.sendFile(__dirname + '/views/dashboard.html');
 });
 app.get('/chat', function(req, res) {
-	res.sendFile(__dirname + '/views/chat.html');
-});
-
-//Abre conexion con socket
-io.sockets.on('connection', function(socket) {
-
-	//Funciones para el sistema de chat
-	socket.on('send message', function(data) {
-		io.sockets.emit('new message', {
-			msg: data,
-			nick: socket.nickname
-		});
-	});
-
-	socket.on('new user', function(data, callback) {
-		if (data in nicknames) {
-			callback(false);
-		} else {
-			callback(true);
-			socket.nickname = data;
-			nicknames[socket.nickname] = 1;
-			updateNickNames();
-		}
-	});
-
-	socket.on('disconnect', function(data) {
-		if (!socket.nickname) return;
-		delete nicknames[socket.nickname];
-		updateNickNames();
-	});
-
-	function updateNickNames() {
-		io.sockets.emit('usernames', nicknames);
-	}
-
+	res.redirect('192.168.250.2/chat');
 });
