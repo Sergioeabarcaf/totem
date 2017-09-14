@@ -33,10 +33,12 @@ client.on('connect', function() {
 
 //generar el schema para cargar a la db
 client.on('message', function(topic, message) {
+	splitMessage = message.toString().split("/");
 	//Schema sensores
 	var sensor = new Sensor({
 		paramSensor: String(topic),
-		dato: message,
+		dato: String(splitMessage[1]),
+		idTotem: String(splitMessage[0]),
 		fechaYHora: Date()
 	});
 
@@ -44,40 +46,125 @@ client.on('message', function(topic, message) {
 	sensor.save(function(err) {
 		if (err) {
 			console.log(err);
-		} else {
-			console.log("los datos fueron cargados a la db " + sensor.paramSensor);
 		}
 	})
 
 	//Condicional para ejecutar la funcion correspondiente a cada dashboard
 	if(topic=="temperatura"){
 		io.sockets.emit('new temperatura', {
-			value: dato
+			value: splitMessage[1]
 		});
-		console.log("Emitio el mensaje a new temperatura");
 	}
 
 	if(topic=="humedad"){
 		io.sockets.emit('new humedad', {
-			value: dato
+			value: splitMessage[1]
 		});
-		console.log("Emitio el mensaje a new humedad");
 	}
 
 	if(topic=="presion"){
 		io.sockets.emit('new presion', {
-			value: dato
+			value: splitMessage[1]
+		});;
+	}
+
+	if(topic=="puntoRocio"){
+		io.sockets.emit('new puntoRocio', {
+			value: splitMessage[1]
 		});
-		console.log("Emitio el mensaje a new presion");
+	}
+
+	if(topic=="viend_ins_grado"){
+		io.sockets.emit('new viend_ins_grado', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="vel_2m"){
+		io.sockets.emit('new vel_2m', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="lluvia_1h"){
+		io.sockets.emit('new lluvia_1h', {
+			value: splitMessage[1]
+		});
 	}
 
 	if(topic=="uv"){
 		io.sockets.emit('new uv', {
-			value: dato
+			value: splitMessage[1]
 		});
-		console.log("Emitio el mensaje a new uv");
+	}
+
+	if(topic=="lummens"){
+		io.sockets.emit('new lummens', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="altitud"){
+		io.sockets.emit('new altitud', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="presion_nivelMar"){
+		io.sockets.emit('new presion_nivelMar', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="temperatura_BMP"){
+		io.sockets.emit('new temperatura_BMP', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="viend_chr"){
+		io.sockets.emit('new viend_chr', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="viend_2m_grados"){
+		io.sockets.emit('new viend_2m_grados', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="raf_ins"){
+		io.sockets.emit('new raf_ins', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="raf_10m"){
+		io.sockets.emit('new raf_10m', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="raf_ins_grados"){
+		io.sockets.emit('new raf_ins_grados', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="raf_10m_grados"){
+		io.sockets.emit('new raf_10m_grados', {
+			value: splitMessage[1]
+		});
+	}
+
+	if(topic=="lluvia_24h"){
+		io.sockets.emit('new lluvia_24h', {
+			value: splitMessage[1]
+		});
 	}
 });
+
 
 //Puerto donde corre el sistema
 server.listen(80);
