@@ -47,6 +47,7 @@ try:
 except ValueError:
     info = info.strip(' \t\r\n')
 datos['lummens'] = info
+
 #A continuacion el indice UV:
 info = arduino_txrx.readline()
 try:
@@ -101,7 +102,7 @@ info = arduino_txrx.readline()
 try:
     info = float(info)
 except ValueError:
-    info = info.strip(' \t\r\n')os.system("mosquitto_pub -t "+ t0 + " -m " + v0 + " -h " + host + " -p " + port)
+    info = info.strip(' \t\r\n')
 datos['raf_ins_grados'] = info
 #A continuacion la direccion de la rafaga de viento promedio de los ultimos 10 minutos:
 info = arduino_txrx.readline()
@@ -124,6 +125,106 @@ try:
 except ValueError:
     info = info.strip(' \t\r\n')
 datos['lluvia_24h'] = info
+
+########################################
+####SEGUNDA LECTURA################
+###################################
+
+time.sleep(0.1)
+#Se indica al arduino el inicio de la transmision de datos.
+arduino_txrx.write('t')
+
+#se espera al inicio de la transmision.
+while arduino_txrx.inWaiting()==0:
+    pass
+
+#comienza la transmision en roden, de modo de guardar cada dato en la ubicacion que le corresponda en el diccionario
+#Se inicia con la intensidad luminica:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['lummens'] = info
+
+#A continuacion el indice UV:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['uv'] = info
+#A continuacion direccion del viento instantanea en grados:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['viend_ins_grado'] = info
+#A continuacion la direccion del viento direccion cardinal:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['viend_chr'] = info
+#A continuacion la direccion del viento promedio de los 2 ultimos minutos:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['viend_2m_grados'] = info
+#A continuacion la velocidad del viento promedio de los 2 ultimos minutos:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['vel_2m'] = info
+#A continuacion la velocidad del viento instantanea:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['raf_ins'] = info
+#A continuacion la velocidad del viento promedio de los 10 ultimos minutos:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['raf_10m'] = info
+#A continuacion la direccion de la rafaga de viento instantanea:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['raf_ins_grados'] = info
+#A continuacion la direccion de la rafaga de viento promedio de los ultimos 10 minutos:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['raf_10m_grados'] = info
+#A continuacion la cantidad de lluvia caida en la ultima hora:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['lluvia_1h'] = info
+#Finalmente la cantidad de lluvia caida en las ultimas 24 horas:
+info = arduino_txrx.readline()
+try:
+    info = float(info)
+except ValueError:
+    info = info.strip(' \t\r\n')
+datos['lluvia_24h'] = info
+
 
 os.system("mosquitto_pub -t lummens" + " -m totem1/" + str(datos['lummens']) + " -h " + host + " -p " + port)
 os.system("mosquitto_pub -t uv" + " -m totem1/" + str(datos['uv']) + " -h " + host + " -p " + port)

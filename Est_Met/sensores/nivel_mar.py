@@ -1,3 +1,4 @@
+
 #importar la libreria necesaria para el sensor
 import os
 import Adafruit_BMP.BMP085 as BMP085
@@ -9,8 +10,8 @@ t0 = 'presion_nivelMar' #Direccion donde se envian los datos del sensor
 
 #Lectura de datos entregadas por sensor
 sensor = BMP085.BMP085()
-v0 = str(sensor.read_sealevel_pressure()/100) #entrega la presion nivel del mar
-men = "totem1/" + v0
+aux = sensor.read_sealevel_pressure()/100
+men = "totem1/" + str(aux)
 #Publicacion de los datos del sensor al servidor MQTT
 os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + host + " -p " + port)
 # os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + hostNC + " -p " + port)

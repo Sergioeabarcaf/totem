@@ -9,8 +9,8 @@ t0 = 'temperatura_BMP' #Direccion donde se envian los datos del sensor
 
 #Lectura de datos entregadas por sensor
 sensor = BMP085.BMP085()
-v0 = str(sensor.read_temperature()) #entrega temperaturas ambiental por el sensor BMP085
-men = "totem1/" + v0
+aux = sensor.read_temperature()
+men = "totem1/" + str(aux)
 #Publicacion de los datos del sensor al servidor MQTT
 os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + host + " -p " + port)
 # os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + hostNC + " -p " + port)

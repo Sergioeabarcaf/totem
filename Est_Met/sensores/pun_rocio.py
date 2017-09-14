@@ -10,8 +10,8 @@ t0 = 'puntoRocio' #Direccion donde se envian los datos del sensor
 
 #Lectura de datos entregadas por sensor
 sensor=SHT1x(38, 40, gpio_mode=GPIO.BOARD)
-v0 = str(sensor.calculate_dew_point(sensor.temperature_celsius,sensor.humidity))#entrega el punto de rocio en relacion de la temperatura y humedad
-men = "totem1/" + v0
+aux = sensor.calculate_dew_point(sensor.temperature_celsius,sensor.humidity)
+men = "totem1/" + str(aux)
 #Publicacion de los datos del sensor al servidor MQTT
 os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + host + " -p " + port)
 # os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + hostNC + " -p " + port)

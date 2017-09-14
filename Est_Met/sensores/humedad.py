@@ -12,8 +12,8 @@ t0 = 'humedad' #Direccion donde se envian los datos del sensor
 sensor=SHT1x(38, 40, gpio_mode=GPIO.BOARD)
 fun_temp=sensor.read_temperature()
 sensor.read_humidity(fun_temp)
-v0 = str(sensor.humidity) #entrega humedad
-men = "totem1/" + v0
+aux = sensor.humidity
+men = "totem1/" + str(aux)
 #Publicacion de los datos del sensor al servidor MQTT
 os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + host + " -p " + port)
 # os.system("mosquitto_pub -t "+ t0 + " -m " + men + " -h " + hostNC + " -p " + port)
