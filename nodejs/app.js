@@ -68,101 +68,12 @@ client.on('message', function(topic, message) {
 		});;
 	}
 
-	if(topic=="puntoRocio"){
-		io.sockets.emit('new puntoRocio', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="viend_ins_grado"){
-		io.sockets.emit('new viend_ins_grado', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="vel_2m"){
-		io.sockets.emit('new vel_2m', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="lluvia_1h"){
-		io.sockets.emit('new lluvia_1h', {
-			value: splitMessage[1]
-		});
-	}
-
 	if(topic=="uv"){
 		io.sockets.emit('new uv', {
 			value: splitMessage[1]
 		});
 	}
 
-	if(topic=="lummens"){
-		io.sockets.emit('new lummens', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="altitud"){
-		io.sockets.emit('new altitud', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="presion_nivelMar"){
-		io.sockets.emit('new presion_nivelMar', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="temperatura_BMP"){
-		io.sockets.emit('new temperatura_BMP', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="viend_chr"){
-		io.sockets.emit('new viend_chr', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="viend_2m_grados"){
-		io.sockets.emit('new viend_2m_grados', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="raf_ins"){
-		io.sockets.emit('new raf_ins', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="raf_10m"){
-		io.sockets.emit('new raf_10m', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="raf_ins_grados"){
-		io.sockets.emit('new raf_ins_grados', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="raf_10m_grados"){
-		io.sockets.emit('new raf_10m_grados', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="lluvia_24h"){
-		io.sockets.emit('new lluvia_24h', {
-			value: splitMessage[1]
-		});
-	}
 });
 
 
