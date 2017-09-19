@@ -89,5 +89,5 @@ app.get('/dashboard',function(req,res){
 	res.sendFile(__dirname + '/views/dashboard.html');
 });
 app.get('/chat', function(req, res) {
-	res.redirect('192.168.250.2/chat');
+	res.redirect('http://192.168.252.250/chat');
 });
