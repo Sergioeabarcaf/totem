@@ -4,7 +4,8 @@ var express = require('express'),
 	io = require("socket.io").listen(server),
 	nicknames = {},
 	mqtt = require('mqtt'),
-	client = mqtt.connect('mqtt://192.168.150.2:1883'),
+	//client = mqtt.connect('mqtt://192.168.150.2:1883'),
+	client = mqtt.connect('mqtt://192.168.1.134:1883'),
 	Sensor = require("./models/sensor").Sensor,
 	document = require("min-document");
 
@@ -29,51 +30,57 @@ client.on('connect', function() {
 	client.subscribe('raf_10m_grados');
 	client.subscribe('lluvia_1h');
 	client.subscribe('lluvia_24h');
+	client.subscribe('alerta')
 });
 
 //generar el schema para cargar a la db
 client.on('message', function(topic, message) {
-	splitMessage = message.toString().split("/");
-	//Schema sensores
-	var sensor = new Sensor({
-		paramSensor: String(topic),
-		dato: String(splitMessage[1]),
-		idTotem: String(splitMessage[0]),
-		fechaYHora: Date()
-	});
+	if(topic=="alerta"){
+		console.log("llego alerta al app.js del totem " + message);
+		io.sockets.emit('new alerta', message.toString());
+	}
+	else{
+		splitMessage = message.toString().split("/");
+		//Schema sensores
+		var sensor = new Sensor({
+			paramSensor: String(topic),
+			dato: String(splitMessage[1]),
+			idTotem: String(splitMessage[0]),
+			fechaYHora: Date()
+		});
 
-	//Guardar en la db los datos.
-	sensor.save(function(err) {
-		if (err) {
-			console.log(err);
+		//Guardar en la db los datos.
+		sensor.save(function(err) {
+			if (err) {
+				console.log(err);
+			}
+		})
+
+		//Condicional para ejecutar la funcion correspondiente a cada dashboard
+		if(topic=="temperatura"){
+			io.sockets.emit('new temperatura', {
+				value: splitMessage[1]
+			});
 		}
-	})
 
-	//Condicional para ejecutar la funcion correspondiente a cada dashboard
-	if(topic=="temperatura"){
-		io.sockets.emit('new temperatura', {
-			value: splitMessage[1]
-		});
+		if(topic=="humedad"){
+			io.sockets.emit('new humedad', {
+				value: splitMessage[1]
+			});
+		}
+
+		if(topic=="presion"){
+			io.sockets.emit('new presion', {
+				value: splitMessage[1]
+			});;
+		}
+
+		if(topic=="uv"){
+			io.sockets.emit('new uv', {
+				value: splitMessage[1]
+			});
+		}
 	}
-
-	if(topic=="humedad"){
-		io.sockets.emit('new humedad', {
-			value: splitMessage[1]
-		});
-	}
-
-	if(topic=="presion"){
-		io.sockets.emit('new presion', {
-			value: splitMessage[1]
-		});;
-	}
-
-	if(topic=="uv"){
-		io.sockets.emit('new uv', {
-			value: splitMessage[1]
-		});
-	}
-
 });
 
 
