@@ -1,0 +1,135 @@
+.main-header {
+	padding: 1rem;
+	background-color: $header-gray;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.20);
+	.site-logo {
+		display: flex;
+		align-items: center;
+		.logo-img {
+			margin-right: .5rem;
+		}
+		.nombre-parque {
+			font-family: $font-text;
+			color: darken($secondary-color, 10);
+		}
+	}
+	.main-navigation {
+		ul {
+			li {
+				a {
+					font-family: $font-text;
+					color: $dark-gray;
+					text-transform: uppercase;
+					&:hover {
+						background-color: lighten($header-gray,10);
+					}
+				}
+				&.is-active {
+					a {
+						background-color: lighten($header-gray,10);
+					}
+				}
+			}
+		}
+	}
+}
+.main-footer {
+	color: darken($dark-gray,15);
+	background-color: $medium-gray;
+	.footer-title {
+		font-family: $font-text;
+		text-transform: uppercase;
+	}
+}
+
+//Mobile nav
+.mobile-nav {
+	position: fixed;
+	width: 100%;
+	padding-top: .5rem;
+	padding-bottom: 1rem;
+	top: 0;
+	z-index: 990;
+	left: 0;
+	background-color: $white;
+	box-shadow: 1px 0 3px $medium-gray;
+	.mobile-logo {
+		display: block;
+		position: absolute;
+		width: 3.1rem;
+		height: 3.1rem;
+		top: 0;
+		margin-left: 0;
+		background-image: url(../img/logo.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-color: transparent;
+	}
+	.mobile-nav-open {
+		display: block;
+		margin-top: .5rem;
+		text-align: center;
+		color: $dark-gray;
+		i {
+			font-size: 1.6rem;
+			line-height: 1.4rem;
+
+		}
+	}
+}
+.menu-mobile-container {
+	margin-top: 3.8rem;
+    @include coverer;
+    position: fixed;
+    z-index: 9999;
+    background: map-get($foundation-palette, primary);
+    .close {
+        position: absolute;
+        right: 1rem;
+        top: .5rem;
+        color: $white;
+        .ion-close {
+            font-size: 2rem;
+        }
+    }
+    .menu {
+    	display: block;
+        margin: 5rem 1.5rem 0 1.5rem;
+        li {
+            a {
+                color: $white;
+                text-transform: uppercase;
+                font-weight: 700;
+                text-transform: uppercase;
+                line-height: 1.2rem;
+               &:active {
+               		background-color: darken(map-get($foundation-palette, primary),20);
+               		color: $white;
+               }
+
+            }
+            &.active {
+            	a {
+            		text-decoration: underline;
+            	}
+            }
+            .is-drilldown-submenu {
+            	//top: 5rem;
+            	background-color: map-get($foundation-palette, primary);
+            	li {
+            		margin-bottom: 1rem;
+            		a {
+            			color: $white;
+            		}
+            		&.js-drilldown-back {
+            			&>a {
+            				&:before {
+            					display: none !important;
+            				}
+            			}
+            		}
+            	}
+            }
+        }
+    }
+}
