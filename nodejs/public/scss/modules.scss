@@ -1,0 +1,260 @@
+.welcome-mobile {
+	margin-top: 6rem;
+	color: darken($dark-gray,15);
+	.site-title {
+		margin: auto;
+		margin-bottom: 1rem;
+		width: 90%;
+		text-align: center;
+		font-family: $font-title;
+		font-size: 1.5rem;
+	}
+	.current-meta {
+		padding: 1rem .5rem;
+		border-top: 1px solid $light-gray;
+		border-bottom: 1px solid $light-gray;
+		font-family: $font-text;
+		font-size: .9rem;
+	}
+}
+.page {
+	.welcome {
+		padding: 2rem 0;
+		.site-title {
+			font-family: $font-title;
+			color: darken($dark-gray,20);
+			font-size: 3.4rem;
+		}
+		.current-meta {
+			margin-top: 2rem;
+			border-top: 1px solid $light-gray;
+			border-bottom: 1px solid $light-gray;
+			font-family: $font-text;
+		}
+	}
+	@include breakpoint(small only) {
+		margin-top: 3rem;
+		padding: 1rem;
+		.welcome {
+			.site-title {
+				font-size: 2rem;
+			}
+		}
+	}
+}
+.welcome {
+	position: relative;
+	.portada-img {
+		width: 100%;
+	}
+	.wrap {
+		@include coverer;
+		background-image: url(../img/wire.png);
+		background-repeat: repeat;
+		.site-title {
+			margin: auto;
+			margin-top: 4rem;
+			width: 50%;
+			text-align: center;
+			font-family: $font-title;
+			color: $white;
+			font-size: 2.4rem;
+		}
+		.current-data {
+			padding: .5rem 1rem;
+			font-family: $font-text;
+			color: $white;
+			font-size: rem-calc(29);
+		}
+		.current-date {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+		.current-time {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	}
+}
+#alertas {
+	.alert {
+		display: flex;
+		padding: 1rem;
+		align-items: center;
+		background-color: $warning-color;
+		border: 1px solid darken($warning-color,6);
+		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.20);
+		.alert-icon {
+			font-size: 3rem;
+			color: $white;
+		}
+		.alert-content {
+			margin-left: 1rem;
+			color: $white;
+			.alert-title {
+				margin-bottom: 0;
+				font-family: $font-title;
+				text-transform: uppercase;
+				font-size: 1.1rem;
+			}
+		}
+		@include breakpoint(small only) {
+			padding: .5rem;
+			.alert-icon { 
+				font-size: 2rem; 
+			}
+			.alert-content {
+				font-size: .9rem;
+			}
+		}
+	}
+}
+
+.box {
+	&.gray {
+		background: $header-gray;
+	}
+	padding: 1.5rem;
+	border: 1px solid darken($header-gray,8);
+	box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.19);
+	border-radius: 2px;
+}
+.weather-info {
+	color: darken($dark-gray,10);
+	.weather-icon {
+		text-align: center;
+		font-size: 13rem;
+	}
+	.temp {
+		.deg {
+			font-family: $font-title;
+		}
+		.type {
+			text-transform: uppercase;
+			font-family: $font-text;
+		}
+		&.max {
+			border-bottom: 1px solid $medium-gray;
+			.deg {
+				font-size: 5rem;
+			}
+		}
+		&.min {
+			.deg {
+				font-size: 3rem;
+			}
+		}
+	}
+	.weather-data {
+		display: flex;
+		align-items: center;
+		&.humidity {
+			margin-top: 2rem;
+		}
+		&.radiation {
+			margin-top: 5rem;
+		}
+		.icon {
+			font-size: rem-calc(50);
+		}
+		.data {
+			margin-left: .5rem;
+			.data-title {
+				display: block;
+				font-family: $font-text;
+				font-size: 1.5rem;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+			.data-value {
+				font-family: $font-title;
+				font-size: 4rem;
+				line-height: 2rem;
+			}
+			.data-unit {
+				margin-left: .5rem;
+				font-family: $font-text;
+				font-style: italic;
+			}
+		}
+	}
+	@include breakpoint(small only) {
+		margin-bottom: 1rem;
+		.weather-icon {
+			font-size: 10rem;
+			line-height: 5rem;
+		}
+		.temp {
+			&.max {
+				.deg {
+					font-size: 3rem;
+				}
+			}
+			&.min {
+				.deg {
+					font-size: 3rem;
+				}
+			}
+		}
+		.weather-data {
+			&.pressure {
+				margin-top: 1rem;
+			}
+			&.radiation {
+				margin-top: 1rem;
+			}
+			&.humidity {
+				margin-top: 1rem;
+			}
+			.data {
+				.data-title {
+					font-size: 1rem;
+				}
+				.data-value {
+					font-size: 2rem;
+				}
+			}
+		}
+	}
+}
+.entry-content {
+	position: relative;
+	a {
+		.entry-wrap {
+			@include coverer;
+			padding: 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-image: -webkit-linear-gradient(top left, rgba(76,255,206,0.47) 0%, rgba(21,52,164,0.83) 100%);
+			background-image: -o-linear-gradient(top left, rgba(76,255,206,0.47) 0%, rgba(21,52,164,0.83) 100%);
+			background-image: linear-gradient(to bottom right, rgba(76,255,206,0.47) 0%, rgba(21,52,164,0.83) 100%);
+			.entry-title {
+				color: $white;
+				font-family: $font-title;
+				text-transform: uppercase;
+				font-size: 1.8rem;
+				text-align: center;
+				padding-bottom: .5rem;
+				border-bottom: 2px solid $white;
+			}
+		}
+		&:hover {
+			.entry-wrap {
+				background-color: $secondary-color;
+			}
+		}
+	}
+	@include breakpoint(small only) {
+		margin-bottom: 1rem;
+		a {
+			.entry-wrap {
+				.entry-title {
+					font-size: 1.1rem;
+				}
+			}
+		}
+	}
+}

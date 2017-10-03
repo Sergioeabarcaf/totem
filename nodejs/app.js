@@ -95,6 +95,21 @@ app.get('/', function(req, res) {
 app.get('/dashboard',function(req,res){
 	res.sendFile(__dirname + '/views/dashboard.html');
 });
+app.get('/flora-fauna',function(req,res){
+	res.sendFile(__dirname + '/views/flora-fauna.html');
+});
+app.get('/index0',function(req,res){
+	res.sendFile(__dirname + '/views/index0.html');
+});
+app.get('/informacion-general',function(req,res){
+	res.sendFile(__dirname + '/views/informacion-general.html');
+});
+app.get('/normas-del-parque',function(req,res){
+	res.sendFile(__dirname + '/views/normas-del-parque.html');
+});
+app.get('/rutas',function(req,res){
+	res.sendFile(__dirname + '/views/rutas.html');
+});
 app.get('/chat', function(req, res) {
 	res.redirect('http://192.168.252.250/chat');
 });

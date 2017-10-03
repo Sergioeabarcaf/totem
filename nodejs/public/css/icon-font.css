@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'proteinlab';
+  src:  url('../fonts/proteinlab.eot?kcuog8');
+  src:  url('../fonts/proteinlab.eot?kcuog8#iefix') format('embedded-opentype'),
+    url('../fonts/proteinlab.ttf?kcuog8') format('truetype'),
+    url('../fonts/proteinlab.woff?kcuog8') format('woff'),
+    url('../fonts/proteinlab.svg?kcuog8#proteinlab') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'proteinlab' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-clima-lluvia-sol:before {
+  content: "\e900";
+}
+.icon-clima-lluvia:before {
+  content: "\e901";
+}
+.icon-clima-luna:before {
+  content: "\e902";
+}
+.icon-clima-nieve:before {
+  content: "\e903";
+}
+.icon-clima-nube-noche:before {
+  content: "\e904";
+}
+.icon-clima-nube-sol:before {
+  content: "\e905";
+}
+.icon-clima-nube:before {
+  content: "\e906";
+}
+.icon-clima-nubes-negras:before {
+  content: "\e907";
+}
+.icon-clima-nubes:before {
+  content: "\e908";
+}
+.icon-clima-sol:before {
+  content: "\e909";
+}
+.icon-clima-tormenta:before {
+  content: "\e90a";
+}
+.icon-clima-viento:before {
+  content: "\e90b";
+}
+.icon-humedad:before {
+  content: "\e90c";
+}
+.icon-presion:before {
+  content: "\e90d";
+}
+.icon-radiacion:before {
+  content: "\e90e";
+}
