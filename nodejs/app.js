@@ -36,7 +36,6 @@ client.on('connect', function() {
 //generar el schema para cargar a la db
 client.on('message', function(topic, message) {
 	if(topic=="alerta"){
-		console.log("llego alerta al app.js del totem " + message);
 		io.sockets.emit('new alerta', message.toString());
 	}
 	else{
@@ -92,14 +91,8 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/views/index.html');
 });
-app.get('/dashboard',function(req,res){
-	res.sendFile(__dirname + '/views/dashboard.html');
-});
 app.get('/flora-fauna',function(req,res){
 	res.sendFile(__dirname + '/views/flora-fauna.html');
-});
-app.get('/index0',function(req,res){
-	res.sendFile(__dirname + '/views/index0.html');
 });
 app.get('/informacion-general',function(req,res){
 	res.sendFile(__dirname + '/views/informacion-general.html');
