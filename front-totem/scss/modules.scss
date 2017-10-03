@@ -154,6 +154,17 @@
 		&.humidity {
 			margin-top: 2rem;
 		}
+		&.temperature {
+			margin-bottom: 5.5rem;
+			margin-top: 1.7rem;
+			@include breakpoint(small only) {
+				margin-bottom: 1rem;
+				.icon {
+					margin-right: .5rem;
+					margin-left: 1rem;
+				}
+			}
+		}
 		&.radiation {
 			margin-top: 5rem;
 		}
