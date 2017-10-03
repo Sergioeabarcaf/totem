@@ -7,7 +7,7 @@ var fechaActual = "";
 
 function updateTime(){
   var time = new Date();
-  horaActual = time.getHours() + " : " + time.getMinutes() + " hrs.";
+  horaActual = time.getHours() + ":" + time.getMinutes() + " hrs.";
   hora.innerText = horaActual;
   fechaActual = time.getDate() + " de " + meses[time.getMonth()] + " de " + time.getFullYear();
   fecha.innerText = fechaActual;
