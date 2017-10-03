@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/dependencies.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body>
+  <body onload="updateTime()">
     <header class="main-header hide-for-small-only">
         <div class="row align-middle">
             <div class="large-3 columns">
@@ -59,18 +59,18 @@
                 <img src="img/portada-parque.jpg" class="portada-img" alt="">
                 <div class="wrap pixelated">
                     <h1 class="site-title">Bienvenidos al parque Nacional Conguillío</h1>
-                    <span class="current-date current-data">Viernes 08 de agosto, 2017</span>
-                    <span class="current-time current-data">9:55 hrs</span>
+                    <span id="fecha" class="current-date current-data">Viernes 08 de agosto, 2017</span>
+                    <span id="hora" class="current-time current-data">9:55 hrs</span>
                 </div>
             </div>
             <div class="large-12 columns welcome-mobile show-for-small-only">
                 <h1 class="site-title">Bienvenidos al parque Nacional Conguillío</h1>
                 <div class="current-meta clearfix">
                     <div class="float-left">
-                        <span class="current-date current-data">Viernes 08 de agosto, 2017</span>
+                        <span id="fecha" class="current-date current-data">Viernes 08 de agosto, 2017</span>
                     </div>
                     <div class="float-right">
-                        <span class="current-time current-data">9:55 hrs</span>
+                        <span id="hora" class="current-time current-data">9:55 hrs</span>
                     </div>
                 </div>
             </div>
@@ -218,5 +218,6 @@
     <script src="js/dashboard.js"></script>
     <script src="js/dependencies.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/time.js"></script>
   </body>
 </html>
