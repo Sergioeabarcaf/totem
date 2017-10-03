@@ -6,23 +6,23 @@ $( document ).ready(function() {
 
 //Funciones que actualizan los valores del dashboard
   //actualiza valor dashboard temperatura
-  socket.on('new temperatura', function(data) {
-    console.log("temperatura: "+ data);
-    temperatura.innerText=data;
+  socket.on('new temperatura', (data) => {
+    console.log("temperatura: "+ data.value);
+    temperatura.innerText=data.value;
   });
   //actualiza valor dashboard humedad
-  socket.on('new humedad', function(data) {
-    console.log("humedad: "+ data);
-    humedad.innerText=data;
+  socket.on('new humedad', (data) => {
+    console.log("humedad: "+ data.value);
+    humedad.innerText=data.value;
   });
   //actualiza valor dashboard presion
-  socket.on('new presion', function(data) {
-    console.log("presion: "+ data);
-    presion.innerText=data;
+  socket.on('new presion', (data) => {
+    console.log("presion: "+ data.value);
+    presion.innerText=data.value;
   });
   //actualiza valor dashboard UV
-  socket.on('new uv', function(data) {
-    console.log("radiacion: "+ data);
-    radiacion.innerText=data;
+  socket.on('new uv', (data) => {
+    console.log("radiacion: "+ data.value);
+    radiacion.innerText=data.value;
   });
 });

@@ -59,25 +59,25 @@ client.on('message', function(topic, message) {
 		//Condicional para ejecutar la funcion correspondiente a cada dashboard
 		if(topic=="temperatura"){
 			io.sockets.emit('new temperatura', {
-				value: splitMessage[1]
+				value: splitMessage[1].toString()
 			});
 		}
 
 		if(topic=="humedad"){
 			io.sockets.emit('new humedad', {
-				value: splitMessage[1]
+				value: splitMessage[1].toString()
 			});
 		}
 
 		if(topic=="presion"){
 			io.sockets.emit('new presion', {
-				value: splitMessage[1]
+				value: splitMessage[1].toString()
 			});;
 		}
 
 		if(topic=="uv"){
 			io.sockets.emit('new uv', {
-				value: splitMessage[1]
+				value: splitMessage[1].toString()
 			});
 		}
 	}
