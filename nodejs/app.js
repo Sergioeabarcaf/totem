@@ -35,10 +35,6 @@ client.on('connect', function() {
 
 //generar el schema para cargar a la db
 client.on('message', function(topic, message) {
-	if(topic=="alerta"){
-		io.sockets.emit('new alerta', message.toString());
-	}
-	else{
 		splitMessage = message.toString().split("/");
 		//Schema sensores
 		var sensor = new Sensor({
@@ -56,6 +52,12 @@ client.on('message', function(topic, message) {
 		})
 
 		//Condicional para ejecutar la funcion correspondiente a cada dashboard
+		if(topic=="alerta"){
+			io.sockets.emit('new alerta', {
+				value: splitMessage[1].toString()
+			});
+		}
+
 		if(topic=="temperatura"){
 			io.sockets.emit('new temperatura', {
 				value: splitMessage[1].toString()
@@ -79,7 +81,6 @@ client.on('message', function(topic, message) {
 				value: splitMessage[1].toString()
 			});
 		}
-	}
 });
 
 
@@ -89,18 +90,81 @@ server.listen(80);
 //Ruteo a las paginas
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new alerta', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "temperatura"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new temperatura', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "humedad"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new humedad', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "presion"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new presion', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "uv"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new uv', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
 	res.sendFile(__dirname + '/views/index.html');
 });
 app.get('/flora-fauna',function(req,res){
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new alerta', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
 	res.sendFile(__dirname + '/views/flora-fauna.html');
 });
 app.get('/informacion-general',function(req,res){
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new alerta', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
 	res.sendFile(__dirname + '/views/informacion-general.html');
 });
 app.get('/normas-del-parque',function(req,res){
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new alerta', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
 	res.sendFile(__dirname + '/views/normas-del-parque.html');
 });
 app.get('/rutas',function(req,res){
+	setTimeout(function(){
+		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
+			io.sockets.emit('new alerta', {
+				value: sensor.dato.toString()
+			});
+		});
+	}, 1000);
 	res.sendFile(__dirname + '/views/rutas.html');
 });
 app.get('/chat', function(req, res) {

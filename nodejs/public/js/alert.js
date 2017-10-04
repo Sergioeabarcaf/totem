@@ -1,6 +1,10 @@
-var socket = io.connect();
-var alerta = document.getElementById('alerta');
+$( document ).ready(function() {
+  var socket = io.connect();
+  var alerta = document.getElementById('alerta');
 
-socket.on('new alerta', (data) => {
-  alerta.innerText=data;
+  console.log("ejecutado");
+  socket.on('new alerta', (data) => {
+    alerta.innerText=data.value;
+  });
+
 });
