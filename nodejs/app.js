@@ -87,7 +87,7 @@ client.on('message', function(topic, message) {
 //Puerto donde corre el sistema
 server.listen(80);
 
-//Ruteo a las paginas
+//Ruteo a index
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
 	setTimeout(function(){
@@ -127,6 +127,7 @@ app.get('/', function(req, res) {
 	}, 1000);
 	res.sendFile(__dirname + '/views/index.html');
 });
+//ruteo a flora y fauna
 app.get('/flora-fauna',function(req,res){
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
@@ -137,6 +138,7 @@ app.get('/flora-fauna',function(req,res){
 	}, 1000);
 	res.sendFile(__dirname + '/views/flora-fauna.html');
 });
+//ruteo a informacion-general
 app.get('/informacion-general',function(req,res){
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
@@ -147,6 +149,7 @@ app.get('/informacion-general',function(req,res){
 	}, 1000);
 	res.sendFile(__dirname + '/views/informacion-general.html');
 });
+//ruteo a normas-del-parque
 app.get('/normas-del-parque',function(req,res){
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
@@ -157,6 +160,7 @@ app.get('/normas-del-parque',function(req,res){
 	}, 1000);
 	res.sendFile(__dirname + '/views/normas-del-parque.html');
 });
+//ruteo a rutas
 app.get('/rutas',function(req,res){
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
@@ -167,6 +171,7 @@ app.get('/rutas',function(req,res){
 	}, 1000);
 	res.sendFile(__dirname + '/views/rutas.html');
 });
+//ruteo a chat
 app.get('/chat', function(req, res) {
 	res.redirect('http://192.168.252.250/chat');
 });
