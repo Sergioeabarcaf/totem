@@ -124,7 +124,7 @@ app.get('/', function(req, res) {
 					value: sensor.dato.toString()
 				});
 			}
-		});humedad
+		});
 	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "uv"},null,{sort:{fechaYHora: -1}},function(err,sensor){
