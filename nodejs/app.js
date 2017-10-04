@@ -92,7 +92,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString()
 				});
@@ -101,7 +101,7 @@ app.get('/', function(req, res) {
 	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "temperatura"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new temperatura', {
 					value: sensor.dato.toString()
 				});
@@ -110,7 +110,7 @@ app.get('/', function(req, res) {
 	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "humedad"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new humedad', {
 					value: sensor.dato.toString()
 				});
@@ -119,7 +119,7 @@ app.get('/', function(req, res) {
 	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "presion"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new presion', {
 					value: sensor.dato.toString()
 				});
@@ -128,7 +128,7 @@ app.get('/', function(req, res) {
 	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "uv"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new uv', {
 					value: sensor.dato.toString()
 				});
@@ -141,7 +141,7 @@ app.get('/', function(req, res) {
 app.get('/flora-fauna',function(req,res){
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString()
 				});
@@ -154,7 +154,7 @@ app.get('/flora-fauna',function(req,res){
 app.get('/informacion-general',function(req,res){
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString()
 				});
@@ -167,7 +167,7 @@ app.get('/informacion-general',function(req,res){
 app.get('/normas-del-parque',function(req,res){
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString()
 				});
@@ -180,7 +180,7 @@ app.get('/normas-del-parque',function(req,res){
 app.get('/rutas',function(req,res){
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			if(sensor.dato){
+			if(sensor.dato!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString()
 				});
