@@ -5,7 +5,6 @@ var express = require('express'),
 	nicknames = {},
 	mqtt = require('mqtt'),
 	client = mqtt.connect('mqtt://192.168.251.20:1883'),
-	//client = mqtt.connect('mqtt://192.168.1.134:1883'),
 	Sensor = require("./models/sensor").Sensor,
 	document = require("min-document");
 
@@ -13,23 +12,8 @@ var express = require('express'),
 client.on('connect', function() {
 	client.subscribe('temperatura');
 	client.subscribe('humedad');
-	client.subscribe('puntoRocio');
 	client.subscribe('presion');
-	client.subscribe('altitud');
-	client.subscribe('presion_nivelMar');
-	client.subscribe('temperatura_BMP');
-	client.subscribe('lummens');
 	client.subscribe('uv');
-	client.subscribe('viend_ins_grado');
-	client.subscribe('viend_chr');
-	client.subscribe('viend_2m_grados');
-	client.subscribe('vel_2m');
-	client.subscribe('raf_ins');
-	client.subscribe('raf_10m');
-	client.subscribe('raf_ins_grados');
-	client.subscribe('raf_10m_grados');
-	client.subscribe('lluvia_1h');
-	client.subscribe('lluvia_24h');
 	client.subscribe('alerta')
 });
 
@@ -53,35 +37,30 @@ client.on('message', function(topic, message) {
 
 		//Condicional para ejecutar la funcion correspondiente a cada dashboard
 		if(topic=="alerta"){
-                        console.log("llego la alerta");
 			io.sockets.emit('new alerta', {
 				value: splitMessage[1].toString()
 			});
 		}
 
 		if(topic=="temperatura"){
-			console.log("llego la temperaturta");
 			io.sockets.emit('new temperatura', {
 				value: splitMessage[1].toString()
 			});
 		}
 
 		if(topic=="humedad"){
-			console.log("llego la humedad");
 			io.sockets.emit('new humedad', {
 				value: splitMessage[1].toString()
 			});
 		}
 
 		if(topic=="presion"){
-			console.log("llego la presion");
 			io.sockets.emit('new presion', {
 				value: splitMessage[1].toString()
 			});;
 		}
 
 		if(topic=="uv"){
-			console.log("llego uv");
 			io.sockets.emit('new uv', {
 				value: splitMessage[1].toString()
 			});
@@ -107,8 +86,6 @@ app.get('/', function(req, res) {
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "temperatura"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
-				console.log("busco temperatura");
-
 				io.sockets.emit('new temperatura', {
 					value: sensor.dato.toString()
 				});
@@ -117,7 +94,6 @@ app.get('/', function(req, res) {
 	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "humedad"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			console.log("busco la humedad");
 			if(sensor!=null){
 				io.sockets.emit('new humedad', {
 					value: sensor.dato.toString()
@@ -127,7 +103,6 @@ app.get('/', function(req, res) {
 	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "presion"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			console.log("busco la presion");
 			if(sensor!=null){
 				io.sockets.emit('new presion', {
 					value: sensor.dato.toString()
@@ -137,7 +112,6 @@ app.get('/', function(req, res) {
 	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "uv"},null,{sort:{fechaYHora: -1}},function(err,sensor){
-			console.log("busco uv");
 			if(sensor!=null){
 				io.sockets.emit('new uv', {
 					value: sensor.dato.toString()
