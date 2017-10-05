@@ -108,6 +108,7 @@ app.get('/', function(req, res) {
 		Sensor.findOne({paramSensor: "temperatura"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				console.log("busco temperatura");
+
 				io.sockets.emit('new temperatura', {
 					value: sensor.dato.toString()
 				});
