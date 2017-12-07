@@ -2,7 +2,7 @@
 import os
 import Adafruit_BMP.BMP085 as BMP085
 
-host = "192.168.251.20" #Direccion IP de donde esta alojado el servidor MQTT
+host = "192.168.150.2" #Direccion IP de donde esta alojado el servidor MQTT
 # hostNC = "192.168.252.250" #Direccion IP de donde esta alojado el servidor MQTT nodo central
 port = "1883" #Puerto por defecto del servidor MQTT
 t0 = 'presion' #Direccion donde se envian los datos del sensor
