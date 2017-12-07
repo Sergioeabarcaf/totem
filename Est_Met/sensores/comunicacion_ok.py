@@ -7,7 +7,7 @@ import time
 import sys
 import json
 
-host = "192.168.251.20" #Direccion IP de donde esta alojado el servidor MQTT
+host = "192.168.150.2" #Direccion IP de donde esta alojado el servidor MQTT
 #hostNC = "192.168.252.250" #Direccion IP de donde esta alojado el servidor MQTT nodo central
 port = "1883" #Puerto por defecto del servidor MQTT
 
@@ -130,7 +130,7 @@ datos['lluvia_24h'] = info
 ####SEGUNDA LECTURA################
 ###################################
 
-time.sleep(0.1)
+time.sleep(2)
 #Se indica al arduino el inicio de la transmision de datos.
 arduino_txrx.write('t')
 
@@ -153,6 +153,8 @@ try:
     info = float(info)
 except ValueError:
     info = info.strip(' \t\r\n')
+print(str(type(info)))
+print(info)
 datos['uv'] = info
 #A continuacion direccion del viento instantanea en grados:
 info = arduino_txrx.readline()
