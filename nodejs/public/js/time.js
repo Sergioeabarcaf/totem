@@ -5,7 +5,12 @@ var dias = new Array ("Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","
 
 function updateTime(){
   time = new Date();
-  horaActual = time.getHours() + ":" + time.getMinutes() + " hrs.";
+  if(time.getMinutes()<10){
+    horaActual = time.getHours() + ":0" + time.getMinutes() + " hrs.";
+  }
+  else {
+    horaActual = time.getHours() + ":" + time.getMinutes() + " hrs.";
+  }
   hora.innerText = horaActual;
   delete horaActual;
   fechaActual = time.getDate() + " de " + meses[time.getMonth()] + " de " + time.getFullYear();

@@ -3,6 +3,8 @@ $( document ).ready(function() {
   var alerta = document.getElementById('alerta');
   socket.on('new alerta', (data) => {
     alerta.innerText=data.value;
+    console.log(data.time);
+    console.log("alerta");
   });
 
 });

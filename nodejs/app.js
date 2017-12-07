@@ -4,7 +4,7 @@ var express = require('express'),
 	io = require("socket.io").listen(server),
 	nicknames = {},
 	mqtt = require('mqtt'),
-	client = mqtt.connect('mqtt://192.168.251.20:1883'),
+	client = mqtt.connect('mqtt://192.168.150.2:1883'),
 	Sensor = require("./models/sensor").Sensor,
 	document = require("min-document");
 
@@ -38,31 +38,36 @@ client.on('message', function(topic, message) {
 		//Condicional para ejecutar la funcion correspondiente a cada dashboard
 		if(topic=="alerta"){
 			io.sockets.emit('new alerta', {
-				value: splitMessage[1].toString()
+				value: splitMessage[1].toString(),
+				time: Date()
 			});
 		}
 
 		if(topic=="temperatura"){
 			io.sockets.emit('new temperatura', {
-				value: splitMessage[1].toString()
+				value: splitMessage[1].toString(),
+				time: Date()
 			});
 		}
 
 		if(topic=="humedad"){
 			io.sockets.emit('new humedad', {
-				value: splitMessage[1].toString()
+				value: splitMessage[1].toString(),
+				time: Date()
 			});
 		}
 
 		if(topic=="presion"){
 			io.sockets.emit('new presion', {
-				value: splitMessage[1].toString()
+				value: splitMessage[1].toString(),
+				time: Date()
 			});;
 		}
 
 		if(topic=="uv"){
 			io.sockets.emit('new uv', {
-				value: splitMessage[1].toString()
+				value: splitMessage[1].toString(),
+				time: Date()
 			});
 		}
 });
@@ -78,7 +83,8 @@ app.get('/', function(req, res) {
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+					time: sensor.fechaYHora.toString()
 				});
 			}
 		});
@@ -87,7 +93,8 @@ app.get('/', function(req, res) {
 		Sensor.findOne({paramSensor: "temperatura"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new temperatura', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+                                        time: sensor.fechaYHora.toString()
 				});
 			}
 		});
@@ -96,7 +103,8 @@ app.get('/', function(req, res) {
 		Sensor.findOne({paramSensor: "humedad"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new humedad', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+                                        time: sensor.fechaYHora.toString()
 				});
 			}
 		});
@@ -105,7 +113,8 @@ app.get('/', function(req, res) {
 		Sensor.findOne({paramSensor: "presion"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new presion', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+                                        time: sensor.fechaYHora.toString()
 				});
 			}
 		});
@@ -114,7 +123,8 @@ app.get('/', function(req, res) {
 		Sensor.findOne({paramSensor: "uv"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new uv', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+                                        time: sensor.fechaYHora.toString()
 				});
 			}
 		});
@@ -127,7 +137,8 @@ app.get('/flora-fauna',function(req,res){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+                                        time: sensor.fechaYHora.toString()
 				});
 			}
 		});
@@ -140,7 +151,8 @@ app.get('/informacion-general',function(req,res){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+                                        time: sensor.fechaYHora.toString()
 				});
 			}
 		});
@@ -153,7 +165,8 @@ app.get('/normas-del-parque',function(req,res){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+                                        time: sensor.fechaYHora.toString()
 				});
 			}
 		});
@@ -166,7 +179,8 @@ app.get('/rutas',function(req,res){
 		Sensor.findOne({paramSensor: "alerta"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
-					value: sensor.dato.toString()
+					value: sensor.dato.toString(),
+                                        time: sensor.fechaYHora.toString()
 				});
 			}
 		});
