@@ -20,7 +20,6 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "file-system": "^2.2.2",
-    "fs-jetpack": "^1.2.0",
     "min-document": "^2.19.0",
     "mongoose": "^4.10.8",
     "mqtt": "^2.9.1",
