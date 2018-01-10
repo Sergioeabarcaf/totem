@@ -21,6 +21,8 @@
     "bootstrap": "^3.3.7",
     "canvas-gauges": "^2.1.4",
     "express": "^4.15.3",
+    "file-system": "^2.2.2",
+    "fs-jetpack": "^1.2.0",
     "jade": "^1.11.0",
     "min-document": "^2.19.0",
     "mongoose": "^4.10.8",
