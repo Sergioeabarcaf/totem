@@ -75,7 +75,9 @@ client.on('message', function(topic, message) {
 
 		if(topic=="time"){
 			fs.writeFile('../setup/time/time.txt', message, function(err) {
-				console.log(err);
+				if(err != null){
+					console.log(err);
+				}
 			})
 		}
 });
