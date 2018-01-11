@@ -74,7 +74,7 @@ client.on('message', function(topic, message) {
 		}
 
 		if(topic=="time"){
-			fs.writeFile('/time/time.txt', message, function(err) {
+			fs.writeFile('/home/pi/totem/nodejs/time/time.txt', message, function(err) {
 				if(err != null){
 					console.log(err);
 				}
