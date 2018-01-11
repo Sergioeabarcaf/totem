@@ -17,8 +17,7 @@ Agregar las siguientes lineas de codigo al crontab de la raspberry para automati
 #*/15 * * * * python /home/pi/temperatura_sys.py
 
 #obtener hora
-@reboot python /home/pi/totem/setup/time/time.py
+@reboot python /home/pi/totem/nodejs/time/time.py
 
 #Obtener datos de estacion cada 30 minutos
 */30 * * * * sudo python /home/pi/totem/Est_Met/sensores/test.py
-
