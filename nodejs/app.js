@@ -6,7 +6,6 @@ var express = require('express'),
 	mqtt = require('mqtt'),
 	client = mqtt.connect('mqtt://192.168.150.2:1883'),
 	Sensor = require("./models/sensor").Sensor,
-	fs = require('file-system');
 	document = require("min-document");
 
 //subscribe a los topicos de los sensores
@@ -15,9 +14,7 @@ client.on('connect', function() {
 	client.subscribe('humedad');
 	client.subscribe('presion');
 	client.subscribe('uv');
-	client.subscribe('alerta');
-	client.subscribe('fecha');
-	client.subscribe('hora')
+	client.subscribe('alerta')
 });
 
 //generar el schema para cargar a la db
@@ -73,28 +70,6 @@ client.on('message', function(topic, message) {
 				time: Date()
 			});
 		}
-
-		if(topic=="hora"){
-			fs.writeFile('/home/pi/totem/nodejs/time/h.txt', message, function(err) {
-				if(err != null){
-					console.log(err);
-				}
-				else{
-					console.log("se guardo hora");
-				}
-			})
-		}
-		if(topic=="fecha"){
-                        fs.writeFile('/home/pi/totem/nodejs/time/dmy.txt', message, function(err) {
-                                if(err != null){
-                                        console.log(err);
-                                }
-                                else{
-                                        console.log("se guardo fecha");
-                                }
-                        })
-                }
-
 });
 
 
