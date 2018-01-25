@@ -16,7 +16,8 @@ client.on('connect', function() {
 	client.subscribe('presion');
 	client.subscribe('uv');
 	client.subscribe('alerta');
-	client.subscribe('time')
+	client.subscribe('fecha');
+	client.subscribe('hora')
 });
 
 //generar el schema para cargar a la db
@@ -73,13 +74,27 @@ client.on('message', function(topic, message) {
 			});
 		}
 
-		if(topic=="time"){
-			fs.writeFile('/home/pi/totem/nodejs/time/time.txt', message, function(err) {
+		if(topic=="hora"){
+			fs.writeFile('/home/pi/totem/nodejs/time/h.txt', message, function(err) {
 				if(err != null){
 					console.log(err);
 				}
+				else{
+					console.log("se guardo hora");
+				}
 			})
 		}
+		if(topic=="fecha"){
+                        fs.writeFile('/home/pi/totem/nodejs/time/dmy.txt', message, function(err) {
+                                if(err != null){
+                                        console.log(err);
+                                }
+                                else{
+                                        console.log("se guardo fecha");
+                                }
+                        })
+                }
+
 });
 
 
