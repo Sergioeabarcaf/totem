@@ -2,7 +2,4 @@
 
 echo Ejecutando nodejs
 cd /home/pi/totem/nodejs
-echo mostrando los archivos del directorio
-ls
-echo ejecutar app.js
 sudo /home/pi/.nvm/versions/node/v8.11.3/bin/node app.js &
