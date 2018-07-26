@@ -1,0 +1,3 @@
+copiar totem en /etc/init.d/
+cambiar chmod +x
+
