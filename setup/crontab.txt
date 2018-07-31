@@ -1,0 +1,12 @@
+@reboot sudo python /home/pi/totem/setup/system/registerON.py
+@reboot python /home/pi/totem/setup/system/control_antenas.py
+@reboot python /home/pi/totem/setup/system/control_ventiladores.py
+@reboot sudo /home/pi/totem/setup/totem
+
+#Modo dev, se toma temperatura dentro de la caja y del procesador de RPI
+#*/15 * * * * python /home/pi/am2302_log.py
+#*/15 * * * * python /home/pi/temperatura_sys.py
+
+#Obtener datos de estacion al reiniciar y luego cada 5 minutos
+@reboot sudo python /home/pi/totem/estacionMetereologica/sensores/test.py
+*/5 * * * * sudo python /home/pi/totem/estacionMetereologica/sensores/getData

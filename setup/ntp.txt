@@ -1,3 +1,0 @@
-# Modificar el archivo /etc/ntp.conf y agregar lo siguiente:
-
-server 192.168.252.250 prefer

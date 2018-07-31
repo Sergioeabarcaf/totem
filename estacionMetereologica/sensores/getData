@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo Obteniendo data de sensores
+cd /home/pi/totem/estacionMetereologica/sensores
+python am2302.py
+python bmp.py
+python comunicacion_ok.py

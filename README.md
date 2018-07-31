@@ -18,3 +18,17 @@ Esta version del sistema esta probada en la experiencia realizada en Rio Clarill
 ### errores y/o mejoras aplicables
 * Ejecutar los servicios desde el inicio pero sin crontab como esta actualmente
 * mejorar interfaces graficas
+
+## V0.9.1
+
+Esta versión contiene las siguientes caracteristicas:
+* Instalacion limpia de NodeJS 8.11.3 (NVM), mosquitto 1.5, MongoDB 2.4.14 sobre Raspbian 9 (stretch)
+* Se levantan los servidores y servicio NodeJS desde el arranque con Bash y crontab
+* Reorganizacion de las carpetas y orden de componentes
+* Almacenamiento de log a nivel local y no correspondiente a git de todos los archivos que lo requieren
+* se cambia el python de ejecucion de sensores por un bash
+* eliminacion de archivos copiados basura
+* cambio de nombre en archivos de sensores, teniendo el nombre del sensor utilizado
+* carpeta test-sensores muestra los valores por pantalla y los almacena en un log local
+
+Versión estable funcionando desde el 30/Julio/2018 en Proteinlab
