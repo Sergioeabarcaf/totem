@@ -9,4 +9,4 @@
 
 #Obtener datos de estacion al reiniciar y luego cada 5 minutos
 @reboot sudo python /home/pi/totem/estacionMetereologica/sensores/test.py
-*/5 * * * * sudo python /home/pi/totem/estacionMetereologica/sensores/test.py
+*/5 * * * * sudo python /home/pi/totem/estacionMetereologica/sensores/getData
