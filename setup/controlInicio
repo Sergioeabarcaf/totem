@@ -1,5 +1,0 @@
-#!/bin/bash
-echo Vamos a activar ventiladores y antenas
-cd /home/pi
-python control_antenas.py
-python control_ventiladores.py
