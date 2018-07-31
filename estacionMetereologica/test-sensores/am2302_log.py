@@ -10,7 +10,7 @@ strHum = "humedad: "+str(humedad)
 strTem = "temperatura: "+str(temperatura)
 strLog = "\n"+str(datetime.now())+" "+ strHum + strTem
 
-log=open("../../log/am2302.log","ab")
+log=open("/home/pi/totem/log/am2302.log","ab")
 log.write(strLog)
 log.close()
 
