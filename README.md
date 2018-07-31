@@ -31,4 +31,10 @@ Esta versión contiene las siguientes caracteristicas:
 * cambio de nombre en archivos de sensores, teniendo el nombre del sensor utilizado
 * carpeta test-sensores muestra los valores por pantalla y los almacena en un log local
 
+## V0.9.2
+Esta versión contiene las siguientes caracteristicas
+* Reparación en bash que no permitia obtener presion
+* reparacion en crontab que no permitia ejecutar bash getData
+* Chmod +x para ejecucion de los archivos
+
 Versión estable funcionando desde el 30/Julio/2018 en Proteinlab
