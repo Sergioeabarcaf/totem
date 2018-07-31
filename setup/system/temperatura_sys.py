@@ -12,9 +12,8 @@ temp_pi_cpu=float(temp_pi_cpu)/1000
 
 temp_pi_gpu=commands.getoutput( '/opt/vc/bin/vcgencmd measure_temp').replace('temp=',' ')
 
-log=open("temp_pi.log","ab")
+log=open("log/temp_pi.log","ab")
 log.write("\n"+str(datetime.now())+" "+"temperatura CPU: "+str(temp_pi_cpu)+" "+"temperatura GPU: "+str(temp_pi_gpu))
 log.close()
 
 sys.exit()
-
