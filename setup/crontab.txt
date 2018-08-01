@@ -1,4 +1,3 @@
-@reboot sudo python /home/pi/totem/setup/system/registerON.py
 @reboot python /home/pi/totem/setup/system/control_antenas.py
 @reboot python /home/pi/totem/setup/system/control_ventiladores.py
 @reboot sudo /home/pi/totem/setup/totem

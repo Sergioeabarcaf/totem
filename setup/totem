@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo actualizando date
+sudo systemctl stop ntp
+sleep 1
+sudo ntpd -gq
+sleep 5
+date >> /home/pi/totem/log/dateON.log
+
 echo Ejecutando nodejs
-cd /home/pi/totem/nodejs
-sudo /home/pi/.nvm/versions/node/v8.11.3/bin/node app.js &
+sudo /home/pi/.nvm/versions/node/v8.11.3/bin/node /home/pi/totem/nodejs/app.js &
