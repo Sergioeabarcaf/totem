@@ -36,5 +36,6 @@ Esta versión contiene las siguientes caracteristicas
 * Reparación en bash que no permitia obtener presion
 * reparacion en crontab que no permitia ejecutar bash getData
 * Chmod +x para ejecucion de los archivos
+* Eliminacion de registerON.py ya que el registro de fecha de encendido lo realiza el bash totem
 
 Versión estable funcionando desde el 30/Julio/2018 en Proteinlab
