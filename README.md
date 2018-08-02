@@ -37,5 +37,6 @@ Esta versión contiene las siguientes caracteristicas
 * reparacion en crontab que no permitia ejecutar bash getData
 * Chmod +x para ejecucion de los archivos
 * Eliminacion de registerON.py ya que el registro de fecha de encendido lo realiza el bash totem
+* uso de mongoose V4.13.14 por compatibilidad con MongoDB 2.4.14
 
 Versión estable funcionando desde el 30/Julio/2018 en Proteinlab
