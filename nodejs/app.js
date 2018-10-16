@@ -119,7 +119,7 @@ app.get('/', function(req, res) {
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "temperatura"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
@@ -129,7 +129,7 @@ app.get('/', function(req, res) {
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "humedad"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
@@ -139,7 +139,7 @@ app.get('/', function(req, res) {
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "presion"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
@@ -149,7 +149,7 @@ app.get('/', function(req, res) {
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "uv"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
@@ -159,7 +159,7 @@ app.get('/', function(req, res) {
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	res.sendFile(__dirname + '/views/index.html');
 });
 //ruteo a flora y fauna
@@ -173,7 +173,7 @@ app.get('/flora-fauna',function(req,res){
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	res.sendFile(__dirname + '/views/flora-fauna.html');
 });
 //ruteo a informacion-general
@@ -187,7 +187,7 @@ app.get('/informacion-general',function(req,res){
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	res.sendFile(__dirname + '/views/informacion-general.html');
 });
 //ruteo a normas-del-parque
@@ -201,7 +201,7 @@ app.get('/normas-del-parque',function(req,res){
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	res.sendFile(__dirname + '/views/normas-del-parque.html');
 });
 //ruteo a rutas
@@ -215,7 +215,7 @@ app.get('/rutas',function(req,res){
 				});
 			}
 		});
-	}, 15000);
+	}, 1000);
 	res.sendFile(__dirname + '/views/rutas.html');
 });
 //ruteo a chat
