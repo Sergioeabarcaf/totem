@@ -36,42 +36,73 @@ client.on('message', function(topic, message) {
 		})
 
 		//Condicional para ejecutar la funcion correspondiente a cada dashboard
-		if(topic=="alerta"){
-			io.sockets.emit('new alerta', {
-				value: splitMessage[1].toString(),
-				time: Date()
-			});
+		switch(topic){
+			case "alerta":
+				io.sockets.emit('new alerta', {
+					value: splitMessage[1].toString(),
+					time: Date()
+				});
+				break;
+			case "temperatura":
+				io.sockets.emit('new temperatura', {
+					value: splitMessage[1].toString(),
+					time: Date()
+				});
+				break;
+			case "humedad":
+				io.sockets.emit('new humedad', {
+					value: splitMessage[1].toString(),
+					time: Date()
+				});
+				break;
+			case "presion":
+				io.sockets.emit('new presion', {
+					value: splitMessage[1].toString(),
+					time: Date()
+				});
+				break;
+			case "uv":
+				io.sockets.emit('new uv', {
+					value: splitMessage[1].toString(),
+					time: Date()
+				});
+				break;
 		}
-
-		if(topic=="temperatura"){
-			io.sockets.emit('new temperatura', {
-				value: splitMessage[1].toString(),
-				time: Date()
-			});
-		}
-
-		if(topic=="humedad"){
-			io.sockets.emit('new humedad', {
-				value: splitMessage[1].toString(),
-				time: Date()
-			});
-		}
-
-		if(topic=="presion"){
-			io.sockets.emit('new presion', {
-				value: splitMessage[1].toString(),
-				time: Date()
-			});;
-		}
-
-		if(topic=="uv"){
-			io.sockets.emit('new uv', {
-				value: splitMessage[1].toString(),
-				time: Date()
-			});
-		}
+		// if(topic=="alerta"){
+		// 	io.sockets.emit('new alerta', {
+		// 		value: splitMessage[1].toString(),
+		// 		time: Date()
+		// 	});
+		// }
+		//
+		// if(topic=="temperatura"){
+		// 	io.sockets.emit('new temperatura', {
+		// 		value: splitMessage[1].toString(),
+		// 		time: Date()
+		// 	});
+		// }
+		//
+		// if(topic=="humedad"){
+		// 	io.sockets.emit('new humedad', {
+		// 		value: splitMessage[1].toString(),
+		// 		time: Date()
+		// 	});
+		// }
+		//
+		// if(topic=="presion"){
+		// 	io.sockets.emit('new presion', {
+		// 		value: splitMessage[1].toString(),
+		// 		time: Date()
+		// 	});
+		// }
+		//
+		// if(topic=="uv"){
+		// 	io.sockets.emit('new uv', {
+		// 		value: splitMessage[1].toString(),
+		// 		time: Date()
+		// 	});
+		// }
 });
-
 
 //Puerto donde corre el sistema
 server.listen(80);
@@ -88,47 +119,47 @@ app.get('/', function(req, res) {
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "temperatura"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new temperatura', {
 					value: sensor.dato.toString(),
-                                        time: sensor.fechaYHora.toString()
+          time: sensor.fechaYHora.toString()
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "humedad"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new humedad', {
 					value: sensor.dato.toString(),
-                                        time: sensor.fechaYHora.toString()
+          time: sensor.fechaYHora.toString()
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "presion"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new presion', {
 					value: sensor.dato.toString(),
-                                        time: sensor.fechaYHora.toString()
+          time: sensor.fechaYHora.toString()
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	setTimeout(function(){
 		Sensor.findOne({paramSensor: "uv"},null,{sort:{fechaYHora: -1}},function(err,sensor){
 			if(sensor!=null){
 				io.sockets.emit('new uv', {
 					value: sensor.dato.toString(),
-                                        time: sensor.fechaYHora.toString()
+          time: sensor.fechaYHora.toString()
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	res.sendFile(__dirname + '/views/index.html');
 });
 //ruteo a flora y fauna
@@ -138,11 +169,11 @@ app.get('/flora-fauna',function(req,res){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString(),
-                                        time: sensor.fechaYHora.toString()
+          time: sensor.fechaYHora.toString()
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	res.sendFile(__dirname + '/views/flora-fauna.html');
 });
 //ruteo a informacion-general
@@ -152,11 +183,11 @@ app.get('/informacion-general',function(req,res){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString(),
-                                        time: sensor.fechaYHora.toString()
+          time: sensor.fechaYHora.toString()
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	res.sendFile(__dirname + '/views/informacion-general.html');
 });
 //ruteo a normas-del-parque
@@ -166,11 +197,11 @@ app.get('/normas-del-parque',function(req,res){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString(),
-                                        time: sensor.fechaYHora.toString()
+          time: sensor.fechaYHora.toString()
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	res.sendFile(__dirname + '/views/normas-del-parque.html');
 });
 //ruteo a rutas
@@ -180,11 +211,11 @@ app.get('/rutas',function(req,res){
 			if(sensor!=null){
 				io.sockets.emit('new alerta', {
 					value: sensor.dato.toString(),
-                                        time: sensor.fechaYHora.toString()
+          time: sensor.fechaYHora.toString()
 				});
 			}
 		});
-	}, 1000);
+	}, 100);
 	res.sendFile(__dirname + '/views/rutas.html');
 });
 //ruteo a chat
