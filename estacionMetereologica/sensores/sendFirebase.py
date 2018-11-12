@@ -24,11 +24,6 @@ default_app = firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://turismo-5351f.firebaseio.com/'
 })
 
-
-
-
-
-
-
-
 print data
+
+send(data)
