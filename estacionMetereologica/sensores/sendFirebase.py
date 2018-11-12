@@ -17,7 +17,7 @@ data = {}
 data.update(bmp180.getPress())
 data.update(am2302.getTemHum())
 data.update(comunicacion_ok.getArduino())
-data.update({'timestamp': datetime.datetime.utcnow()})
+data.update({'timestamp': str(datetime.datetime.utcnow())})
 
 cred = credentials.Certificate('keyTurismo.json')
 default_app = firebase_admin.initialize_app(cred, {
