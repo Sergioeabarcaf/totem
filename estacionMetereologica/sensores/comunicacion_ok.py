@@ -42,6 +42,33 @@ while arduino_txrx.inWaiting()==0:
 #comienza la transmision en roden, de modo de guardar cada dato en la ubicacion que le corresponda en el diccionario
 #Se inicia con la intensidad luminica:
 def getArduino():
+
+    datos = {
+        'lummens' : 0,
+        'uv': 0,
+        'viend_ins_grado': 0,
+        'viend_chr': 0,
+        'viend_2m_grados': 0,
+        'vel_2m':0,
+        'raf_ins':0,
+        'raf_10m':0,
+        'raf_ins_grados':0,
+        'raf_10m_grados':0,
+        'lluvia_1h':0,
+        'lluvia_24h':0}
+
+    #Configuracion del puerto donde se encuentra conectado el arduino.
+    arduino_txrx = serial.Serial('/dev/ttyACM0', 115200)
+    #Se agrega una pausa de 2s a la espera del fin de la comunicacion entre dispositivos.
+    time.sleep(2)
+
+    #Se indica al arduino el inicio de la transmision de datos.
+    arduino_txrx.write('t')
+
+    #se espera al inicio de la transmision.
+    while arduino_txrx.inWaiting()==0:
+        pass
+
     info = arduino_txrx.readline()
     try:
         info = float(info)
