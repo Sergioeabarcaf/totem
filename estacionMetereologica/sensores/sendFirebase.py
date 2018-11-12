@@ -1,3 +1,4 @@
 import am2302 as TH
 
-print TH.getTemHum()
+algo = am2302.getTemHum()
+print algo

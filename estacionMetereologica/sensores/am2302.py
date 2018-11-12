@@ -11,6 +11,7 @@ humedad = round(float(humedad),2)
 temperatura = round(float(temperatura),2)
 
 def getTemHum():
+    print "entro a getTemHum"
     return {"temperatura":temperatura, "humedad":humedad}
 
 # menHum = "totem1/" + str(humedad)
