@@ -254,6 +254,8 @@ def getArduino():
     except ValueError:
         info = info.strip(' \t\r\n')
     datos['lluvia_24h'] = info
+    
+    arduino_txrx.close()
 
     return datos
 
@@ -291,5 +293,5 @@ def getArduino():
 #         json.dump(datos,archivo)
 
 #Finalmente se cierra la comunicacion serie del puerto USB y se finaliza la ejecucion del script python:
-arduino_txrx.close()
-sys.exit()
+
+# sys.exit()
