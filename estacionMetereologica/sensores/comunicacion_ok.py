@@ -21,7 +21,6 @@ def getArduino():
     arduino_txrx = serial.Serial('/dev/ttyACM0', 115200)
 
     for i in range(0,2):
-        print i
         #Se agrega una pausa de 2s a la espera del fin de la comunicacion entre dispositivos.
         time.sleep(2)
 
