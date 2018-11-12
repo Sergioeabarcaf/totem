@@ -17,5 +17,5 @@ aux = sensor.read_pressure()/100
 
 def getPress():
     sensor = BMP085.BMP085()
-    aux = sensor.read_pressure()/100
+    aux = sensor.read_pressure()
     return  {'presion': aux}
