@@ -12,6 +12,9 @@ temperatura = round(float(temperatura),2)
 
 def getTemHum():
     print "entro a getTemHum"
+    humedad, temperatura = sensor.read_retry(sensor.AM2302, 24)
+    humedad = round(float(humedad),2)
+    temperatura = round(float(temperatura),2)
     return {"temperatura":temperatura, "humedad":humedad}
 
 # menHum = "totem1/" + str(humedad)
@@ -20,4 +23,4 @@ def getTemHum():
 # os.system("mosquitto_pub -t temperatura -m " + menTem + " -h " + host + " -p " + port)
 # os.system("mosquitto_pub -t humedad -m " + menHum + " -h " + host + " -p " + port)
 
-sys.exit()
+# sys.exit()
