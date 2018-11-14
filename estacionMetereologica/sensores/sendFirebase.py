@@ -17,7 +17,7 @@ data.update(am2302.getTemHum())
 data.update(comunicacion_ok.getArduino())
 data.update({'timestamp': str(datetime.datetime.utcnow())})
 
-cred = credentials.Certificate('keyTurismo.json')
+cred = credentials.Certificate('/home/pi/totem/estacionMetereologica/sensores/keyTurismo.json')
 default_app = firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://turismo-5351f.firebaseio.com/'
 })
