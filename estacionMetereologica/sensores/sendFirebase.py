@@ -10,7 +10,7 @@ from firebase_admin import db
 def send(data,date):
     dateAux = date.split(" ")
     date = dateAux[0].split("-")
-    dir = str("A" + date[0] + "/M" + date[1] + "/D" + date[2])
+    dir = str("data/A" + date[0] + "/M" + date[1] + "/D" + date[2])
     ref = db.reference(dir)
     ref.push(data)
 
